@@ -1,0 +1,19 @@
+<app-navbar></app-navbar>
+<div>
+    <h1> Step 1: Choose your Model and Color</h1>
+    <div>
+        <label> Model:</label>
+        <select [(ngModel)]="service.selectedModelCode" (ngModelChange)="onModelChange()" id="modelSelect">
+            <option [ngValue]="undefined" selected> Choose...</option>
+            <option *ngFor=" let m of modelList" [value]="m.code">{{ m?.description }}</option>
+        </select>
+        <label *ngIf="service.selectedModelCode"> Color:</label>
+        <select *ngIf="service.selectedModelCode" [(ngModel)]="service.selectedColorCode"
+            (ngModelChange)="onColorChange()" id="colorSelect">
+            <option *ngFor="let c of service.modelColors" [value]="c.code">{{ c?.description }}</option>
+        </select>
+    </div>
+    <div *ngIf="service.selectedModelCode !== undefined">
+        <img src={{service.selectedCarImageUrl}}>
+    </div>
+</div>

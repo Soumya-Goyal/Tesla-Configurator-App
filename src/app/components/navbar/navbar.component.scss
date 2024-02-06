@@ -1,0 +1,17 @@
+.isDisabled {
+  cursor: not-allowed;
+  pointer-events: none;
+  opacity: 0.5;
+  text-decoration: none;
+}
+
+#step1,
+#step2,
+#step3 {
+  text-decoration: none;
+  text-align: center;
+}
+
+ul {
+  list-style-type: none;
+}

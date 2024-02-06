@@ -1,0 +1,12 @@
+<div>
+  <nav>
+    <ul class="row">
+      <li class="col-4"><a id="step1" routerLink="">Step 1</a></li>
+      <li class="col-4"><a id="step2" routerLink="/config"
+          [ngClass]="{'isDisabled': !service.isModelAndColorSelected}">Step 2</a>
+      </li>
+      <li class="col-4"><a id="step3" routerLink="/summary" [ngClass]="{'isDisabled': !service.isConfigSelected}">Step
+          3</a></li>
+    </ul>
+  </nav>
+</div>

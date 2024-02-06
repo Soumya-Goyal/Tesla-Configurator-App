@@ -1,0 +1,24 @@
+<app-navbar></app-navbar>
+<div>
+    <h1>Step 2: Select your config and options</h1>
+    <label> Config:</label>
+    <select [(ngModel)]="service.selectedConfigId" (ngModelChange)="onConfigChange()" id="configSelect">
+        <option [ngValue]="undefined" selected> Choose...</option>
+        <option *ngFor="let c of configList?.configs" [value]="c.id">{{ c?.description }}</option>
+    </select>
+    <div *ngIf="service.selectedConfigId">
+        <label>Range: </label> {{ service.selectedConfig?.range }}
+        <label> - Max Speed: </label> {{ service.selectedConfig?.speed }}
+        <label> - Cost: </label> {{ service.selectedConfig?.price | currency:'USD'}}
+    </div>
+    <div *ngIf="configList?.towHitch">
+        <label> Tow Hitch? </label> <input id="includeTow" type="checkbox" [(ngModel)]="service.isTowHitchChecked">
+    </div>
+    <div *ngIf="configList?.yoke">
+        <label> Yoke steering wheel?</label> <input id="includeYoke" type="checkbox"
+            [(ngModel)]="service.isYokeChecked">
+    </div>
+</div>
+<div>
+    <img src={{service.selectedCarImageUrl}}>
+</div>
