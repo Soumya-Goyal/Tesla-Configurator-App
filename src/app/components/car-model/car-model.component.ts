@@ -30,7 +30,7 @@ export class CarModelComponent implements OnInit {
   public selectedColor: ModelColors;
   public modelList: Model[] = [];
   public modelColors: ModelColors[] = [];
-  public imageUrl: string = 'https://interstate21.com/tesla-app/images/'
+  public imageUrl: string = 'assets/images/'
   public selectedCarImageUrl: string = '';
 
   constructor(public service: CarConfiguratorService) {
@@ -71,7 +71,7 @@ export class CarModelComponent implements OnInit {
   onColorChange() {
     this.service.selectedColor = this.service.modelColors.filter(x => x.code == this.service.selectedColorCode)[0];
     // localStorage.setItem('selectedColor', JSON.stringify(this.service.selectedColor));
-    this.service.selectedCarImageUrl = this.imageUrl + this.service.selectedModelCode + '/' + this.service.selectedColorCode + '.jpg';
+    this.service.selectedCarImageUrl = this.imageUrl + this.service.selectedModelCode + ':' + this.service.selectedColorCode + '.jpeg';
     // localStorage.setItem('selectedImage', this.service.selectedCarImageUrl);
     if (this.service.selectedCarImageUrl != '') {
       this.service.isModelAndColorSelected = true;
