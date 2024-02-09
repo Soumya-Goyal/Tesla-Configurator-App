@@ -1,7 +1,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { Config } from '../components/car-config/car-config.component';
+import { Config, ConfigList } from '../components/car-config/car-config.component';
 import { Model, ModelColors } from '../components/car-model/car-model.component';
 
 @Injectable({
@@ -30,19 +30,19 @@ export class CarConfiguratorService {
     })
   }
 
-  public getCarModel(): Observable<any> {
+  public getCarModel(): Observable<Model[]> {
 
     let url: string = "/models"
 
-    return this.http.get(url, { headers: this.headers });
+    return this.http.get<Model[]>(url, { headers: this.headers });
 
   }
 
-  public getCarConfig(modelCode: any): Observable<any> {
+  public getCarConfig(modelCode: string | undefined): Observable<ConfigList> {
 
     let url: string = "/options/" + modelCode;
 
-    return this.http.get(url, { headers: this.headers });
+    return this.http.get<ConfigList>(url, { headers: this.headers });
 
   }
 }
